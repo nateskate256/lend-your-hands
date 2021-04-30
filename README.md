@@ -1,4 +1,5 @@
 # lend-your-hands
+https://github.com/nateskate256/lend-your-hands
 
 ## User Story
 
@@ -14,7 +15,7 @@ An application to search for volunteer opportunities in your local area, that al
 
 ## Wireframe
 
-![FoodTiesWireframe](https://user-images.githubusercontent.com/77896188/116616337-7648cf80-a8f1-11eb-80ee-4d8e3f4f74ae.png)
+![Lend-Your-HandsWireframe](https://user-images.githubusercontent.com/77896188/116616337-7648cf80-a8f1-11eb-80ee-4d8e3f4f74ae.png)
 
 ## Table of Contents
 
@@ -30,11 +31,11 @@ An application to search for volunteer opportunities in your local area, that al
 
 ## Installation
 
-This application uses an MVC folder structure is created with Node.js, Express.js, Handlebars.js, MySQL, Sequelize, morgan, bycrypt, express-session, and is deployed on Heroku.
+Using firebase for authentication, MongoDB for database, Node, Express, axios and graphql.
+
 
 ## Usage
-
-This application is for searching for volunteer opportunites in your local area
+This is a MERN application using axios and graphql.  We utilize an API from volunteer match to access volunteer opportunities.  The user will be able to search for opportunities in the local area by entering city or zip code.  We also use Google Maps to pin point opportunities.
 
 ## License
 
