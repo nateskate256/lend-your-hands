@@ -15,7 +15,7 @@ An application to search for volunteer opportunities in your local area, that al
 
 ## Wireframe
 
-![Lend-Your-HandsWireframe](https://user-images.githubusercontent.com/77896188/116616337-7648cf80-a8f1-11eb-80ee-4d8e3f4f74ae.png)
+![Lend-Your-HandsWireframe](https://user-images.githubusercontent.com/73257176/116756094-c0e94b00-a9c8-11eb-9cc0-e937ff976c8e.png)
 
 ## Table of Contents
 
