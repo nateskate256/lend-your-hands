@@ -1,17 +1,17 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import Jumbotron from './components/Jumbotron';
+import Nav from './components/Navbar';
+import Jumbo from './components/Jumbotron';
 import Table from './components/Table';
-import Modal from './components/Modal';
+import ConfirmationBox from './components/Modal';
 
 
 function App() {
   return (
     <>
-    <Navbar />
-   <Jumbotron />
+    <Nav />
+   <Jumbo />
    <Table />
-  <Modal />
+  <ConfirmationBox />
 </>
   );
 }
