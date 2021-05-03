@@ -1,9 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
+// import Nav from "../components/Navbar";
+// import Jumbo from "../components/Jumbotron";
+// // import Table from "../components/Table";
+// import ConfirmationBox from "../components/Modal";
 
-export class Home extends Component {
-  render() {
-    return <div>Home</div>;
-  }
+function Home() {
+  return (
+    <div>
+      <h2> Components BELOW:</h2>
+    {/* <Nav /> */}
+    </div>
+  );
 }
 
 export default Home;
