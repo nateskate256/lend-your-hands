@@ -1,15 +1,16 @@
 import React from "react";
-import { Navbar } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
+import ConfirmationBox from "../Modal"
 
-function Nav() {
+function CustomNav() {
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand href="#home">Paw Prints</Navbar.Brand>
       <Nav className="mr-auto">
-        <Nav.Link href="#home">Modal</Nav.Link>
+        <Nav.Link href="#home">Login/Signup</Nav.Link>
       </Nav>
     </Navbar>
   );
 }
 
-export default Nav;
+export default CustomNav;

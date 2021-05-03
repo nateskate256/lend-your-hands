@@ -9,7 +9,7 @@ function ConfirmationBox() {
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+        Login/Signup
       </Button>
 
       <Modal show={show} onHide={handleClose}>
