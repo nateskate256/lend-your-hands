@@ -41,7 +41,7 @@ return (
     </Card>
 
     <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+      <Card.Img variant="top" src="/images/Kittens-Puppies-dapple.jpeg" />
     </Card>
   </Container>
 </Jumbotron>
