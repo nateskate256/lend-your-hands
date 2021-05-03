@@ -1,5 +1,5 @@
 import React from "react";
-import { Jumbotron, Container, Card, Form, Button } from "react-bootstrap";
+import { Jumbotron, Container, Card, Form, Button, Col } from "react-bootstrap";
 
 function Jumbo() {
 return (
