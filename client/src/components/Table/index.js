@@ -2,7 +2,7 @@ import React from "react";
 
 function Table(props) {
   return (
-    <table class="table table-striped">
+    <table className="table table-striped">
       <thead>
         <tr>
           <th scope="col">Name</th>
@@ -11,7 +11,7 @@ function Table(props) {
           <th scope="col">DOB</th>
         </tr>
       </thead>
-      <tbody>
+      {/* <tbody>
         {props.users.map((data) => {
           return (
             <tr>
@@ -22,7 +22,7 @@ function Table(props) {
             </tr>
           );
         })}
-      </tbody>
+      </tbody> */}
     </table>
   );
 }
