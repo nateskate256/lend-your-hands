@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 
 function ConfirmationBox() {
