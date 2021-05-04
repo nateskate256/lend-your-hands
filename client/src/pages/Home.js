@@ -2,15 +2,15 @@ import React from "react";
 import CustomNav from "../components/Navbar";
 import Jumbo from "../components/Jumbotron";
 import Table from "../components/Table";
-// import Map from "../components/Modal";
+import GoogleMaps from "../components/GoogleMap/googlemap";
 
 function Home() {
   return (
     <>
-    <CustomNav />
-    <Jumbo />
-    <Table />
-    {/* <Map /> */}
+      <CustomNav />
+      <Jumbo />
+      <Table />
+      <GoogleMaps />
     </>
   );
 }
