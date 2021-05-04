@@ -1,5 +1,5 @@
-const getAuth =async function () {
- const data = await fetch("https://api.petfinder.com/v2/oauth2/token", {
+const getAuth = async function () {
+  let data = await fetch("https://api.petfinder.com/v2/oauth2/token", {
     method: "POST",
     body:
       "grant_type=client_credentials&client_id=" +

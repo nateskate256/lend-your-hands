@@ -1,10 +1,10 @@
-import { get } from "mongoose";
+// import { get } from "mongoose";
 import React from "react";
-import getAuth from "../../utils";
+import getAuth from "../../utils/API";
 
- async function Table(props) {
-  const token =  await getAuth();
-  console.log(token)
+function Table() {
+  const token = getAuth();
+  console.log(token);
   return (
     <table className="table table-striped">
       <thead>
