@@ -5,10 +5,10 @@ const animalsSchema = new Schema({
     id: { type: Number, required: true },
     name: { type: String, },
     type: { type: String },
-    breed: { type: String },
+    breeds: { type: String },
     gender: { type: String },
     age: { type: Number },
-    status: { type: String, required: true },
+    photo: { type: Image},
     // phone number
     contact: { type: Number, required: true },
     date: { type: Date }
