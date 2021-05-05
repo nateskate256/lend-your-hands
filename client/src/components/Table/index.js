@@ -14,7 +14,7 @@ function Table() {
           <th scope="col">Breed</th>
           <th scope="col">Gender</th>
           <th scope="col">Age</th>
-          <th scope="col">Status</th>
+          <th scope="col">Photo</th>
           <th scope="col">Phone</th>
           <th scope="col">Date</th>
         </tr>

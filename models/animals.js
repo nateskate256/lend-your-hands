@@ -8,7 +8,7 @@ const animalsSchema = new Schema({
     breed: { type: String },
     gender: { type: String },
     age: { type: Number },
-    status: { type: String, required: true },
+    photo: { type: Image},
     // phone number
     contact: { type: Number, required: true },
     date: { type: Date }
