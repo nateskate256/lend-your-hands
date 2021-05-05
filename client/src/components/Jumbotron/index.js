@@ -1,9 +1,12 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Jumbotron, Container, Card, Form, Button, Col } from "react-bootstrap";
+import API from "../../utils/API"
 
 function Jumbo() {
   const [location, setLocation]= useState("");
-
+useEffect(() => {
+  API.getLocalPets()
+}, [])
   
 
 return (

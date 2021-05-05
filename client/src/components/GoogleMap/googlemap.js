@@ -1,4 +1,5 @@
 import React from "react";
+import mapStyles from "./mapStyles";
 
 import {
   GoogleMap,
@@ -8,7 +9,7 @@ import {
 } from "@react-google-maps/api";
 import { formatRelative } from "date-fns";
 import usePlacesAutocomplete, {
-  getGeoCode,
+  getGeocode,
   getLatLng,
 } from "use-places-autocomplete";
 import {
@@ -20,17 +21,23 @@ import {
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import pawPrintPin from "../GoogleMap/icon/pawPrintPin.png";
-
+import dogImg from "../GoogleMap/icon/Dog.jpeg";
+const styles = {
+  img: {
+    width: "200px",
+  },
+};
 const mapContainerStyle = {
-  width: "800px",
+  width: "100vw",
   height: "800px",
 };
 const options = {
+  styles: mapStyles,
   scrollwheel: false,
   disableDefaultUI: true,
   zoomControl: true,
 };
-let center = {
+const center = {
   lat: 33.43909225753613,
   lng: -112.0763359855901,
 };
@@ -59,11 +66,16 @@ export default function Map() {
     mapRef.current = map;
   }, []);
 
+  const panTo = React.useCallback(({ lat, lng }) => {
+    mapRef.current.panTo({ lat, lng });
+    mapRef.current.setZoom(13);
+  }, []);
   if (loadError) return "Error Loading Map";
   if (!isLoaded) return "Loading Map";
   return (
     <div className="map">
-      <Search />
+      <Search panTo={panTo} />
+      <Locate panTo={panTo} />
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={center}
@@ -94,8 +106,10 @@ export default function Map() {
             }}
           >
             <div>
-              <h2>Animal needs to be Rescued</h2>
-              <h4>UserName: Cwinslow7 </h4>
+              <h6>Animal needs to be Rescued</h6>
+              <p> Name:</p>
+              <p> Breed:</p>
+              <img src={dogImg} style={styles.img} alt="dog" />
               <p>Post Created {formatRelative(selected.time, new Date())} </p>
             </div>
           </InfoWindow>
@@ -104,8 +118,26 @@ export default function Map() {
     </div>
   );
 }
-
-function Search() {
+function Locate({ panTo }) {
+  return (
+    <button
+      onClick={() => {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            panTo({
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            });
+          },
+          () => null
+        );
+      }}
+    >
+      Find Pets Around Me
+    </button>
+  );
+}
+function Search({ panTo }) {
   const {
     ready,
     value,
@@ -115,7 +147,7 @@ function Search() {
   } = usePlacesAutocomplete({
     requestOptions: {
       location: { lat: () => 33.43909225753613, lng: () => -112.0763359855901 },
-      radius: 200 * 1000,
+      radius: 1000 * 1000,
     },
   });
   const handleInput = (e) => {
@@ -123,10 +155,19 @@ function Search() {
   };
 
   return (
-    <div className="search">
+    <div>
       <Combobox
-        onSelect={(address) => {
-          console.log(address);
+        onSelect={async (address) => {
+          setValue(address, false);
+          clearSuggestions();
+          try {
+            const results = await getGeocode({ address });
+            const { lat, lng } = await getLatLng(results[0]);
+            panTo({ lat, lng });
+            console.log(lat, lng);
+          } catch (error) {
+            console.log(error);
+          }
         }}
       >
         <ComboboxInput
