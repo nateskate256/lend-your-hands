@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import { Jumbotron, Container, Card, Form, Button, Col } from "react-bootstrap";
 
 function Jumbo() {
+  const [location, setLocation]= useState("");
+
+  
+
 return (
 <Jumbotron fluid>
   <Container>
@@ -14,23 +18,15 @@ return (
         </Card.Text>
         <Form>
           <Form.Row>
-            <Form.Group as={Col} controlId="formGridCity">
-              <Form.Label>City</Form.Label>
-              <Form.Control />
-            </Form.Group>
-
             <Form.Group as={Col} controlId="formGridState">
-              <Form.Label>State</Form.Label>
-              <Form.Control as="select" defaultValue="Choose...">
-                <option>Choose...</option>
-                <option>...</option>
-              </Form.Control>
+              <Form.Label>Zip Code or State</Form.Label>
+              <Form.Control value={location.value} onChange={e => setLocation({location:e.target.value})}/>
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridZip">
+            {/* <Form.Group as={Col} controlId="formGridZip">
               <Form.Label>Zip</Form.Label>
               <Form.Control />
-            </Form.Group>
+            </Form.Group> */}
           </Form.Row>
 
           <Button variant="primary" type="submit">
