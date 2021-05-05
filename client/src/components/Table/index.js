@@ -25,7 +25,7 @@ function Table() {
             <tr>
               <td>{data.name}</td>
               <td>{data.type}</td>
-              <td>{data.breed}</td>
+              <td>{data.breeds}</td>
              <td>{data.gender}</td>
               <td>{data.age}</td>
               <td><img src= {data.photo.thumbnail} alt="animal"/></td>
