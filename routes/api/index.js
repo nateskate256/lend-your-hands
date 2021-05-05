@@ -2,8 +2,10 @@ const { default: Axios } = require("axios");
 
 const router = require("express").Router();
 
+state= {location};
+
 let token, tokenType, expires = "" ;
- const postalorstate = "85746"
+ const location = this.state.location;
 
 const getOAuth = function() {
     return Axios.post('https://api.petfinder.com/v2/oauth2/token', {
@@ -23,7 +25,7 @@ const getOAuth = function() {
 
 
 const getPetData = async()=> {
-    const response = await Axios.get(`https://api.petfinder.com/v2/animals?location=${postalorstate}`,{headers:{"Authorization":token}})
+    const response = await Axios.get(`https://api.petfinder.com/v2/animals?location=${location}&limit=50`,{headers:{"Authorization":token}})
     console.log(response)
 }
 

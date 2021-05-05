@@ -13,8 +13,8 @@ return (
       <Card.Body>
         <Card.Title>Welcome to Paw Prints</Card.Title>
         <Card.Text>
-          Find your new best friend.
-          lkadjl;fkjkasdlkjglsdkglsdj;jfsldkfjlskdlgsdllfkjsljdsl
+          Find your new best friend &#10084;&#65039;. Whether it's a dog, cat, or a rabbit in a hat🎩; find someone that will love to always be there for you! Search for all your amazing opportunities near you! 
+          🐴 🐶 🐱 🐰 🐹 🐦 🐢 🦎 🐟
         </Card.Text>
         <Form>
           <Form.Row>
