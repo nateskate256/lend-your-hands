@@ -15,6 +15,7 @@ function Table() {
           <th scope="col">Gender</th>
           <th scope="col">Age</th>
           <th scope="col">Photo</th>
+          <th scope="col">Status</th>
           <th scope="col">Phone</th>
           <th scope="col">Date</th>
         </tr>
@@ -27,6 +28,7 @@ function Table() {
         <td>Male</td>
         <td>2 years</td>
         <td>photo</td>
+        <td>adoptable</td>
         <td>890-234-4567</td>
         <td>May 5, 2021</td>
       </tbody>
