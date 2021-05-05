@@ -3,6 +3,7 @@ import React from "react";
 import getAuth from "../../utils/API";
 
 function Table() {
+  const {petdata} = this.state;
   const token = getAuth();
   console.log(token);
   return (
@@ -34,18 +35,18 @@ function Table() {
       </tbody>
 
       {/* <tbody>
-        {props.users.map((data) => {
+        {pets.map((pet) => {
           return (
             <tr>
-              <td>{data.name}</td>
-              <td>{data.type}</td>
-              <td>{data.breeds}</td>
-             <td>{data.gender}</td>
-              <td>{data.age}</td>
-              <td><img src= {data.photo.thumbnail} alt="animal"/></td>
-               <td>{data.status}</td>
-                <td>{data.contact.phone}</td>
-              <td>{data.date}</td>
+              <td>{pet.name}</td>
+              <td>{pet.type}</td>
+              <td>{pet.breeds}</td>
+             <td>{pet.gender}</td>
+              <td>{pet.age}</td>
+              <td><img src= {pet.photo.thumbnail} alt="animal"/></td>
+               <td>{pet.status}</td>
+                <td>{pet.contact.phone}</td>
+              <td>{pet.date}</td>
             </tr>
           );
         })}
