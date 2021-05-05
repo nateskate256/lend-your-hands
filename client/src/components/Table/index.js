@@ -6,23 +6,32 @@ function Table() {
   const token = getAuth();
   console.log(token);
   return (
-    <table className="table table-striped">
+    <table striped bordered>
       <thead>
         <tr>
           <th scope="col">Name</th>
+          <th scope="col">Type</th>
+          <th scope="col">Breed</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Age</th>
+          <th scope="col">Status</th>
           <th scope="col">Phone</th>
-          <th scope="col">E-Mail</th>
-          <th scope="col">DOB</th>
+          <th scope="col">Date</th>
         </tr>
       </thead>
       {/* <tbody>
         {props.users.map((data) => {
           return (
             <tr>
-              <td>{data.name.first} {data.name.last}</td>
-              <td>{data.phone}</td>
-              <td>{data.email}</td>
-              <td>{data.dob.date.slice(0,10)}</td>
+              <td>{data.name}</td>
+              <td>{data.type}</td>
+              <td>{data.breed}</td>
+             <td>{data.gender}</td>
+              <td>{data.age}</td>
+              <td><img src= {data.photo.thumbnail} alt="animal"/></td>
+               <td>{data.status}</td>
+                <td>{data.contact.phone}</td>
+              <td>{data.date}</td>
             </tr>
           );
         })}
