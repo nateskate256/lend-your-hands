@@ -12,24 +12,19 @@ const location = this.state.location;
 
 const getOAuth = async () => {
   try {
-      const headers = {"Content-Type": "application/x-www-form-urlencoded"}
-      const data = JSON.stringify({
-         grant_type: "client_credentials",
-            client_id: process.env.REACT_APP_PETFINDER_API,
-            client_secret: process.env.REACT_APP_PETFINDER_SECRET,  
-      })
     const getToken = await Axios.post(
-      "https://api.petfinder.com/v2/oauth2/token",data,
-      
-        //{ body: JSON.stringify({
-        //   grant_type: "client_credentials",
-        //   client_id: process.env.REACT_APP_PETFINDER_API,
-        //   client_secret: process.env.REACT_APP_PETFINDER_SECRET,
-        // }),
-        // headers: {
-        //     "Content-Type": "application/x-www-form-urlencoded",
-        //   },}
-      { headers:headers}
+      "https://api.petfinder.com/v2/oauth2/token",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          grant_type: "client_credentials",
+          client_id: process.env.REACT_APP_PETFINDER_API,
+          client_secret: process.env.REACT_APP_PETFINDER_SECRET,
+        }),
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+      }
     );
     getToken = getToken.json();
     // Store token data

@@ -19,7 +19,7 @@ const handleSubmit = async (e) => {
   console.log("clicked!")
   // we can access the location state
   const token = await API.getOAuthToken();
-  console.log(token);
+  // console.log(token);
 }
 
 return (
