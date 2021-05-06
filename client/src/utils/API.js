@@ -2,29 +2,50 @@ import axios from "axios";
 
 export default {
   getLocalPets: function () {
-    return axios.get("https://api.petfinder.com/v2/animals?location=arizona&limit=10", { headers: { "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJSdVBPbVpIY3FLWEVGclRmZGwyN25vYjR6VVVFaDhra3BuUFdsRkJRUWRlODlFVmNhMiIsImp0aSI6IjJmZTYyMzNjMWMyNWM0MGY0MTMxMDYwMTk4MzIwNWYxOGZjODNkZDU5NGYzOTFlNjU5YmYzOTNhNDcyOTg3YzI5YjFmM2YxZjM5YjBmZTI3IiwiaWF0IjoxNjIwMjU5MzE5LCJuYmYiOjE2MjAyNTkzMTksImV4cCI6MTYyMDI2MjkxOSwic3ViIjoiIiwic2NvcGVzIjpbXX0.gA9PYap5DxuReYJvG1UKBsm-riuUXnWx_hmqL1abfwW1sXgn2jds9mBKhoyT4Y7QPSWIqUdtIVzJgKCbK18kTnVKoSbDny0FjeJ-9E1nLk07dzK6sORqgQs1qq3M2KDUJ7bDcSF-Mr4IE0MQIuStPEPGfdm9WQffZ31r7f-FxR1YYSA0wRouZpB4msESdL3Il0ihQeLy1XW9B7kr5-NTnO0UpMbfokloGF4IdrDlxNR1tkjxs6C8k2-B5aaMisHRj_ZaP44N9SOeHd1DsziAdy9g6VKgqjv7rMmq1KwdUar7900GPG2K72g4wwoqdTLd6e7nWtQYbUFqBd2nCUlzPA" } })
+    return axios.get("/api/pets")
   },
 
-  getOAuthToken: async () => {
-    try{
-    const resp = await axios.post('https://api.petfinder.com/v2/oauth2/token', 
-    {
-      grant_type: "client_credentials",
-      client_id: process.env.REACT_APP_PETFINDER_API,
-      client_secret: process.env.REACT_APP_PETFINDER_SECRET,
-    },
-     { headers: { 'content-type': "application/x-www-form-urlencoded" } })
-    // Store token data
-    let token = resp.access_token;
-    let tokenType = resp.token_type;
-    let expires = new Date().getTime() + (resp.expires_in * 1000);
-  }catch(err){
-    console.log(err)
+  getOAuthToken: function (){
+    return axios.get("/api/petstoken")
   }
-  }
-}
 
- // /*getLocalPets: () => return axios.get('/api/localpets') */
+  // // getOAuthToken: async function () {
+  //   try {
+  //     // const resp = await axios.post('https://api.petfinder.com/v2/oauth2/token',
+  //     //     {params:{
+  //     //       grant_type: "client_credentials",
+  //     //       // client_id: process.env.REACT_APP_PETFINDER_API,
+  //     //       // client_secret: process.env.REACT_APP_PETFINDER_SECRET,
+  //     //       client_id: "RuPOmZHcqKXEFrTfdl27nob4zUUEh8kkpnPWlFBQQde89EVca2",
+  //     //       client_secret: "rzk6a0134syYve69kDPw3zDHJO44db7Bw4BAM5SU",
+  //     //     }},
+  //     //     {headers:{
+  //     //       "Content-Type":'x-www-form-urlencoded'
+  //     //     }}
+  //     //   );
+  //     const resp = await axios({
+  //       url: "https://api.petfinder.com/v2/oauth/token",
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "x-www-form-urlencoded"
+  //       },
+  //       body: {
+  //         client_id: "RuPOmZHcqKXEFrTfdl27nob4zUUEh8kkpnPWlFBQQde89EVca2",
+  //         client_secret: "rzk6a0134syYve69kDPw3zDHJO44db7Bw4BAM5SU",
+  //         grant_type:"client-credentials"
+  //       },
+  //       });
+  //        let token = resp.access_token;
+  //     let tokenType = resp.token_type;
+  //     let expires = new Date().getTime() + (resp.expires_in * 1000)
+
+  //     console.log(resp)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+
+}
 
 
 

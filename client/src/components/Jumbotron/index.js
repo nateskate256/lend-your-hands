@@ -4,22 +4,18 @@ import API from "../../utils/API"
 
 function Jumbo() {
   const [location, setLocation]= useState("");
-  
-
-// useEffect(() => {
-//   // api.getToken().then(token => store token to a variable);
-//   // api.getLocalPets()
-
-//   //get the token
-//   API.getLocalPets().then(allPets => console.log(allPets));
-// }, [])
 
 const handleSubmit = async (e) => {
   e.preventDefault();
   console.log("clicked!")
   // we can access the location state
+  const pets = await API.getLocalPets();
   const token = await API.getOAuthToken();
-  // console.log(token);
+  console.log("getLocalPetsFunc")
+  console.log(pets);
+  console.log("getOAuthToken")
+  console.log(token)
+
 }
 
 return (
