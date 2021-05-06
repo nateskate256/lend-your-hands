@@ -3,8 +3,6 @@ import {
   Jumbotron,
   Container,
   Card,
-  Form,
-  Button,
   Col,
   Row,
 } from "react-bootstrap";
@@ -35,28 +33,6 @@ function Jumbo() {
                   opportunities near you! 🐴 🐶 🐱 🐰 🐹 🐦 🐢 🦎 🐟
                 </Card.Text>
                 <Container>
-                  <Form>
-                    <Form.Row>
-                      <Form.Group as={Col} controlId="formGridState">
-                        <Form.Label>Zip Code or State</Form.Label>
-                        <Form.Control
-                          value={location.value}
-                          onChange={(e) =>
-                            setLocation({ location: e.target.value })
-                          }
-                        />
-                      </Form.Group>
-
-                      {/* <Form.Group as={Col} controlId="formGridZip">
-              <Form.Label>Zip</Form.Label>
-              <Form.Control />
-            </Form.Group> */}
-                    </Form.Row>
-
-                    <Button variant="primary" type="submit">
-                      Submit
-                    </Button>
-                  </Form>
                 </Container>
               </Card.Body>
             </Card>

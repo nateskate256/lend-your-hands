@@ -3,7 +3,8 @@ import { Navbar, Nav, Button, Modal, Form } from "react-bootstrap";
 import emailAuth from "../../auth/email"
 import googleAuth from "../../auth/google"
 import facebookAuth from "../../auth/facebook"
-
+import firebase from "firebase/app";
+import { isLastDayOfMonth } from "date-fns";
 
 function CustomNav() {
   const [show, setShow] = useState(false);
@@ -26,14 +27,31 @@ function CustomNav() {
     emailAuth.signUpWithEmailPassword(username, password)
     handleClose()
   };
+  const [isLoggedin, setIsLoggedIn] = React.useState(false);
+  firebase.auth().onAuthStateChanged(function (user) {
+    setIsLoggedIn(!!user);
+  });
+
+function setLoggedOut() {
+  firebase.auth().signOut().then(() => {
+    // Sign-out successful.
+  }).catch((error) => {
+    // An error happened.
+  });
+}
+
   return (
     <>
     <Navbar bg="light" expand="lg">
       <Navbar.Brand href="#home">Paw Prints</Navbar.Brand>
       <Nav className="mr-auto">
-      <Button variant="primary" onClick={handleShow}>
-        Login/Signup
+        {isLoggedin ? (
+      <Button variant="primary" onClick={setLoggedOut}>
+        Log Out
       </Button>
+      ) : (<Button variant="primary" onClick={handleShow}>
+      Login/Signup
+    </Button>)}
       </Nav>
     </Navbar>
     <Modal show={show} onHide={handleClose}>
