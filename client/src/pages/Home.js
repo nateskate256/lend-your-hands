@@ -3,20 +3,26 @@ import CustomNav from "../components/Navbar";
 import Jumbo from "../components/Jumbotron";
 import Table from "../components/Table";
 import GoogleMaps from "../components/GoogleMap/googlemap";
+import firebase from "firebase/app";
+
 
 function Home() {
-  const [show, setShow] = useState(false);
+  const [isLoggedin, setIsLoggedIn] = React.useState(false);
+  firebase.auth().onAuthStateChanged(function (user) {
+    setIsLoggedIn(!!user);
+  });
 
   return (
     <>
       <CustomNav />
       <Jumbo />
-      <button onClick={() => setShow(!show)}>Turn Map On</button>
-      {show && (
-        <div>
+      {isLoggedin ? (
+        <>
           <Table />
           <GoogleMaps />
-        </div>
+        </>
+      ) : (
+        <p></p>
       )}
     </>
   );

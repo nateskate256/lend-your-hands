@@ -12,7 +12,7 @@ const animalsSchema = new Schema({
     status: { type: String},
     // phone number
     contact: { type: Number, required: true },
-    date: { type: Date }
+    date: { type: Date, default: Date.now }
 });
 
 const Animals = mongoose.model("Animals", animalsSchema);
