@@ -1,25 +1,31 @@
+import React, { useState, useEffect } from "react";
+import {
+  Jumbotron,
+  Container,
+  Card,
+  Form,
+  Button,
+  Col,
+  Row,
+} from "react-bootstrap";
+import API from "../../utils/API";
 
-import React, {useState, useEffect} from "react";
-import { Jumbotron, Container, Card, Form, Button, Col, Row } from "react-bootstrap";
-import API from "../../utils/API"
-
-function Jumbo() {
-  const [location, setLocation]= useState("");
-useEffect(() => {
-  API.getLocalPets()
-}, [])
-  
+// function Jumbo() {
+//   const [location, setLocation]= useState("");
+// useEffect(() => {
+//   API.getLocalPets()
+// }, [])
 
 function Jumbo() {
   const [location, setLocation] = useState("");
-  const cardstyle ={backgroundColor: '#F16E10', height: '100%'};
-  const padding = {padding: '0'};
+  const cardstyle = { backgroundColor: "#F16E10", height: "100%" };
+  const padding = { padding: "0" };
   return (
     <Jumbotron fluid>
       <Container>
         <Row>
           <Col style={padding}>
-            <Card style={cardstyle} >
+            <Card style={cardstyle}>
               <Card.Body>
                 <Card.Title>Welcome to Paw Prints</Card.Title>
                 <Card.Text>
@@ -56,7 +62,7 @@ function Jumbo() {
             </Card>
           </Col>
           <Col>
-          {/* style={{ width: "18rem" }} */}
+            {/* style={{ width: "18rem" }} */}
             <Card>
               <Card.Img
                 variant="top"
