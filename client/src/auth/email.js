@@ -1,55 +1,61 @@
-import firebase from "firebase/app";
-import "firebase/auth";
+import firebaseAuth from "../firebase"
 
-function signInWithEmailPassword() {
-    var email = "test@example.com";
-    var password = "hunter2";
+export default {
+  signInWithEmailPassword: function (email, password) {
     // [START auth_signin_password]
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    firebaseAuth
+      .auth()
+      .signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         // Signed in
-        var user = userCredential.user;
+        var user = userCredential.user.toJSON()
+        console.log(user)
         // ...
       })
       .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
+        console.log(error)
       });
     // [END auth_signin_password]
-  }
-  
-  function signUpWithEmailPassword() {
-    var email = "test@example.com";
-    var password = "hunter2";
+  },
+
+  signUpWithEmailPassword: function (email, password) {
     // [START auth_signup_password]
-    firebase.auth().createUserWithEmailAndPassword(email, password)
+    firebaseAuth
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        // Signed in 
-        var user = userCredential.user;
+        // Signed in
+        var user = userCredential.user.toJSON();
+        console.log(user)
         // ...
       })
       .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
+        console.log(error)
         // ..
       });
     // [END auth_signup_password]
-  }
-  
-  function sendEmailVerification() {
+  },
+  sendEmailVerification: function () {
     // [START auth_send_email_verification]
-    firebase.auth().currentUser.sendEmailVerification()
+    firebaseAuth
+      .auth()
+      .currentUser.sendEmailVerification()
       .then(() => {
         // Email verification sent!
         // ...
       });
     // [END auth_send_email_verification]
-  }
-  
-  function sendPasswordReset() {
+  },
+  sendPasswordReset: function () {
     const email = "sam@example.com";
     // [START auth_send_password_reset]
-    firebase.auth().sendPasswordResetEmail(email)
+    firebaseAuth
+      .auth()
+      .sendPasswordResetEmail(email)
       .then(() => {
         // Password reset email sent!
         // ..
@@ -60,4 +66,5 @@ function signInWithEmailPassword() {
         // ..
       });
     // [END auth_send_password_reset]
-  }
+  },
+};
