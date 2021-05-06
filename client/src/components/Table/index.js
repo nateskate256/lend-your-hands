@@ -3,9 +3,9 @@ import React from "react";
 // import getOAuth from "../../utils/API";
 
 function Table() {
-  const {petdata} = this.state;
-  const token = getAuth();
-  console.log(token);
+  // const {petdata} = this.state;
+  // const token = getAuth();
+  // console.log(token);
   // const token = getOAuth();
   // console.log(token);
   return (

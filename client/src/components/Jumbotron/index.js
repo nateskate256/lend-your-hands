@@ -4,10 +4,23 @@ import API from "../../utils/API"
 
 function Jumbo() {
   const [location, setLocation]= useState("");
-useEffect(() => {
-  API.getLocalPets()
-}, [])
   
+
+// useEffect(() => {
+//   // api.getToken().then(token => store token to a variable);
+//   // api.getLocalPets()
+
+//   //get the token
+//   API.getLocalPets().then(allPets => console.log(allPets));
+// }, [])
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  console.log("clicked!")
+  // we can access the location state
+  const token = await API.getOAuthToken();
+  console.log(token);
+}
 
 return (
 <Jumbotron fluid>
@@ -32,7 +45,7 @@ return (
             </Form.Group> */}
           </Form.Row>
 
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" onClick={handleSubmit}>
             Submit
           </Button>
         </Form>
