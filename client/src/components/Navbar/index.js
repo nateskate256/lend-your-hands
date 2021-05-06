@@ -17,12 +17,14 @@ function CustomNav() {
     console.log("username is " + username);
     console.log("password is " + password);
     emailAuth.signInWithEmailPassword(username, password)
+    handleClose()
   };
   const handleSignUp = e => {
     e.preventDefault();
     console.log("username is " + username);
     console.log("password is " + password);
     emailAuth.signUpWithEmailPassword(username, password)
+    handleClose()
   };
   return (
     <>
