@@ -1,11 +1,11 @@
-import firebase from "firebase/app";
-import "firebase/auth";
+import firebaseAuth from "../firebase"
+
 
 // Docs: https://source.corp.google.com/piper///depot/google3/third_party/devsite/firebase/en/docs/auth/web/google-signin.md
 
 function googleProvider() {
   // [START auth_google_provider_create]
-  var provider = new firebase.auth.GoogleAuthProvider();
+  var provider = new firebaseAuth.auth.GoogleAuthProvider();
   // [END auth_google_provider_create]
 
   // [START auth_google_provider_scopes]
@@ -21,7 +21,7 @@ function googleProvider() {
 
 function googleSignInPopup(provider) {
   // [START auth_google_signin_popup]
-  firebase.auth()
+  firebaseAuth.auth()
     .signInWithPopup(provider)
     .then((result) => {
       /** @type {firebase.auth.OAuthCredential} */
@@ -47,7 +47,7 @@ function googleSignInPopup(provider) {
 
 function googleSignInRedirectResult() {
   // [START auth_google_signin_redirect_result]
-  firebase.auth()
+  firebaseAuth.auth()
     .getRedirectResult()
     .then((result) => {
       if (result.credential) {
@@ -76,10 +76,10 @@ function googleSignInRedirectResult() {
 function googleBuildAndSignIn(id_token) {
   // [START auth_google_build_signin]
   // Build Firebase credential with the Google ID token.
-  var credential = firebase.auth.GoogleAuthProvider.credential(id_token);
+  var credential = firebaseAuth.auth.GoogleAuthProvider.credential(id_token);
 
   // Sign in with credential from the Google user.
-  firebase.auth().signInWithCredential(credential).catch((error) => {
+  firebaseAuth.auth().signInWithCredential(credential).catch((error) => {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -96,17 +96,17 @@ function googleBuildAndSignIn(id_token) {
 function onSignIn(googleUser) {
   console.log('Google Auth Response', googleUser);
   // We need to register an Observer on Firebase Auth to make sure auth is initialized.
-  var unsubscribe = firebase.auth().onAuthStateChanged((firebaseUser) => {
+  var unsubscribe = firebaseAuth.auth().onAuthStateChanged((firebaseUser) => {
     unsubscribe();
     // Check if we are already signed-in Firebase with the correct user.
     if (!isUserEqual(googleUser, firebaseUser)) {
       // Build Firebase credential with the Google ID token.
-      var credential = firebase.auth.GoogleAuthProvider.credential(
+      var credential = firebaseAuth.auth.GoogleAuthProvider.credential(
           googleUser.getAuthResponse().id_token);
   
       // Sign in with credential from the Google user.
       // [START auth_google_signin_credential]
-      firebase.auth().signInWithCredential(credential).catch((error) => {
+      firebaseAuth.auth().signInWithCredential(credential).catch((error) => {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -129,7 +129,7 @@ function isUserEqual(googleUser, firebaseUser) {
   if (firebaseUser) {
     var providerData = firebaseUser.providerData;
     for (var i = 0; i < providerData.length; i++) {
-      if (providerData[i].providerId === firebase.auth.GoogleAuthProvider.PROVIDER_ID &&
+      if (providerData[i].providerId === firebaseAuth.auth.GoogleAuthProvider.PROVIDER_ID &&
           providerData[i].uid === googleUser.getBasicProfile().getId()) {
         // We don't need to reauth the Firebase connection.
         return true;
