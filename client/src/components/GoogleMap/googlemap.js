@@ -123,10 +123,12 @@ export default function Map() {
 
  const HandleSubmit= async() =>{
    console.log("clicked!!!")
-// const token = await API.getOAuthToken();
-const petdata = await API.getLocalPets();
-// console.log("OAUTHTOKEN")
-// console.log(token);
+let token = await API.getOAuthToken();
+token = token.data.access_token
+let petdata = await API.getLocalPets(token);
+ petdata = petdata.data.animals
+console.log("OAUTHTOKEN")
+console.log(token);
 console.log("PETDATA");
 console.log(petdata);
 }
