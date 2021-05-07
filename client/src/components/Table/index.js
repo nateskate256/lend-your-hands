@@ -1,14 +1,20 @@
-// import { get } from "mongoose";
 import React from "react";
-// import getOAuth from "../../utils/API";
+import { Table } from "react-bootstrap";
 
-function Table() {
-  // const token = getOAuth();
-  // console.log(token);
+// import { get } from "mongoose";
+const style = {
+  imageStyle: {
+    width: "50px",
+    height: "50px",
+  },
+};
+
+function Petable(props) {
   return (
-    <table className="table striped-table">
+    <Table striped>
       <thead>
         <tr>
+          <th scope="col">Save</th>
           <th scope="col">Name</th>
           <th scope="col">Type</th>
           <th scope="col">Breed</th>
@@ -22,35 +28,32 @@ function Table() {
       </thead>
 
       <tbody>
-        <td>Spot</td>
-        <td>Cat</td>
-        <td>American shorhair</td>
-        <td>Male</td>
-        <td>2 years</td>
-        <td>photo</td>
-        <td>adoptable</td>
-        <td>890-234-4567</td>
-        <td>May 5, 2021</td>
-      </tbody>
-
-      {/* <tbody>
-        {props.users.map((data) => {
+        {props.animals[i].map((data) => {
           return (
             <tr>
+              <td>
+                <img
+                  style={style.imageStyle}
+                  src="/images/paw.jpeg"
+                  onClick={}
+                ></img>
+              </td>
               <td>{data.name}</td>
               <td>{data.type}</td>
               <td>{data.breeds}</td>
-             <td>{data.gender}</td>
+              <td>{data.gender}</td>
               <td>{data.age}</td>
-              <td><img src= {data.photo.thumbnail} alt="animal"/></td>
-               <td>{data.status}</td>
-                <td>{data.contact.phone}</td>
+              <td>
+                <img src={data.photo.thumbnail} alt="animal" />
+              </td>
+              <td>{data.status}</td>
+              <td>{data.contact.phone}</td>
               <td>{data.date}</td>
             </tr>
           );
         })}
-      </tbody> */}
-    </table>
+      </tbody>
+    </Table>
   );
 }
-export default Table;
+export default Petable;
