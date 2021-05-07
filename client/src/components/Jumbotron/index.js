@@ -7,6 +7,7 @@ import {
   Row,
 } from "react-bootstrap";
 import API from "../../utils/API";
+import "../../../src/index.css"
 
 // function Jumbo() {
 //   const [location, setLocation]= useState("");
@@ -23,14 +24,14 @@ function Jumbo() {
       <Container>
         <Row>
           <Col style={padding}>
-            <Card style={cardstyle}>
+            <Card id="cardBkg">
               <Card.Body>
-                <Card.Title>Welcome to Paw Prints</Card.Title>
-                <Card.Text>
+                <Card.Title className="title">Welcome to Paw Prints</Card.Title>
+                <Card.Text className="textBody">
                   Find your new best friend &#10084;&#65039;. Whether it's a
                   dog, cat, or a rabbit in a hat🎩; find someone that will love
                   to always be there for you! Search for all your amazing
-                  opportunities near you! 🐴 🐶 🐱 🐰 🐹 🐦 🐢 🦎 🐟
+                  opportunities near you! 
                 </Card.Text>
                 <Container>
                 </Container>
