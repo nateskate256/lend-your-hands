@@ -2,14 +2,15 @@ import React from "react";
 import { Table } from "react-bootstrap";
 
 // import { get } from "mongoose";
-// const style = {
-//   imageStyle: {
-//     width: "50px",
-//     height: "50px",
-//   },
-// };
+const style = {
+  imageStyle: {
+    width: "50px",
+    height: "50px",
+  },
+};
 
-function Petable() {
+function Petable(props) {
+  console.log (props)
   return (
     <Table striped>
       <thead>
@@ -28,7 +29,7 @@ function Petable() {
       </thead>
 
       {/* <tbody>
-        {props.animals[i].map((data) => {
+        {props.data.animals[0].map((data) => {
           return (
             <tr>
               <td>
@@ -49,8 +50,8 @@ function Petable() {
               <td>{data.status}</td>
               <td>{data.contact.phone}</td>
               <td>{data.date}</td>
-            </tr> */}
-          {/* );
+            </tr>
+           );
         })}
       </tbody> */}
     </Table>

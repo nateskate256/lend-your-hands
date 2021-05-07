@@ -74,6 +74,7 @@ export default function Map() {
   }, []);
   if (loadError) return "Error Loading Map";
   if (!isLoaded) return "Loading Map";
+
   return (
     <div className="map">
       <Search />
@@ -118,22 +119,26 @@ export default function Map() {
           </InfoWindow>
         ) : null}
       </GoogleMap>
-      <Petable />
+      <HandleSubmit />
     </div>
   );
 }
 
- const HandleSubmit= async() =>{
-   console.log("clicked!!!")
-let token = await API.getOAuthToken();
-token = token.data.access_token
-let petdata = await API.getLocalPets(token);
- petdata = petdata.data.animals
-console.log("OAUTHTOKEN")
-console.log(token);
-console.log("PETDATA");
-console.log(petdata);
-}
+const HandleSubmit = async () => {
+  console.log("clicked!!!");
+  let token = await API.getOAuthToken();
+  token = token.data.access_token;
+  let petdata = await API.getLocalPets(token);
+  petdata = petdata.data.animals;
+  console.log("OAUTHTOKEN");
+  console.log(token);
+  console.log("PETDATA");
+  console.log(petdata);
+  return (
+    <Petable {...petdata }/>
+  )
+};
+
 // function getPosition(){
 //   () => {
 //     navigator.geolocation.getCurrentPosition(
@@ -149,13 +154,7 @@ console.log(petdata);
 // }
 
 function Locate() {
-  return (
-    <button
-      onClick={HandleSubmit}
-    >
-      Find Pets Around Me
-    </button>
-  );
+  return <button onClick={HandleSubmit}>Find Pets Around Me</button>;
 }
 function Search() {
   const {
