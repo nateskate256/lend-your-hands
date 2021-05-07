@@ -1,6 +1,7 @@
 import React from "react";
 import mapStyles from "./mapStyles";
-import API from "../../utils/API"
+import API from "../../utils/API";
+import Petable from "../Table";
 
 import {
   GoogleMap,
@@ -117,6 +118,7 @@ export default function Map() {
           </InfoWindow>
         ) : null}
       </GoogleMap>
+      <Petable />
     </div>
   );
 }
