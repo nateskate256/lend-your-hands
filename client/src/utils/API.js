@@ -6,7 +6,7 @@ export default {
   },
 
   getOAuthToken: function (){
-    return axios.get("/api/petstoken")
+    return axios.get("/api/pets/token")
   }
 
   // // getOAuthToken: async function () {
