@@ -18,7 +18,6 @@ function Home() {
       <Jumbo />
       {isLoggedin ? (
         <>
-          <Table />
           <GoogleMaps />
         </>
       ) : (
