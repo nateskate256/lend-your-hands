@@ -1,13 +1,50 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.title{
+  font-weight: 800;
+  font-size: 40px;
+}
+.textBody{
+  font-weight: 500;
+  font-size: 25px;
+}
+
+#cardBkg {
+  background-image: url("https://user-images.githubusercontent.com/77896188/117374289-c12e8e00-ae81-11eb-8479-a61fbb2f387a.png");
+  height: 45.75vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.logEnd{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navPad {
+  padding-left: 30px;
+}
+
+.butPad {
+  padding: 20px;
+}
+
+.centerText {
+  display: flex;
+  /* flex-direction: column; */
+  /* align-items: center; */
+  justify-content: flex-end;
 }
