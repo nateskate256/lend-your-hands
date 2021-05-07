@@ -125,7 +125,8 @@ export default function Map() {
    console.log("clicked!!!")
 let token = await API.getOAuthToken();
 token = token.data.access_token
-const petdata = await API.getLocalPets(token);
+let petdata = await API.getLocalPets(token);
+ petdata = petdata.data.animals
 console.log("OAUTHTOKEN")
 console.log(token);
 console.log("PETDATA");
