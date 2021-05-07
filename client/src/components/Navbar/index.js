@@ -4,7 +4,8 @@ import emailAuth from "../../auth/email"
 import googleAuth from "../../auth/google"
 import facebookAuth from "../../auth/facebook"
 import firebase from "firebase/app";
-import { isLastDayOfMonth } from "date-fns";
+import "../../../src/index.css"
+
 
 function CustomNav() {
   const [show, setShow] = useState(false);
@@ -42,21 +43,21 @@ function setLoggedOut() {
 
   return (
     <>
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand href="#home">Paw Prints</Navbar.Brand>
+    <Navbar className="centerText" bg="light" expand="lg">
+      <Navbar.Brand className="navPad" href="#home">🐴 🐶 🐱 🐰 Paw Prints🐹 🐦 🐢 🦎 🐟</Navbar.Brand>
       <Nav className="mr-auto">
         {isLoggedin ? (
       <Button variant="primary" onClick={setLoggedOut}>
         Log Out
       </Button>
-      ) : (<Button variant="primary" onClick={handleShow}>
+      ) : (<Button variant="" onClick={handleShow}>
       Login/Signup
     </Button>)}
       </Nav>
     </Navbar>
     <Modal show={show} onHide={handleClose}>
     <Modal.Header>
-      <Modal.Title>Modal heading</Modal.Title>
+      <Modal.Title>Welcome to Paw Prints!</Modal.Title>
     </Modal.Header>
     <Modal.Body>
       <Form>
