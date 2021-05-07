@@ -1,5 +1,6 @@
 import React from "react";
 import mapStyles from "./mapStyles";
+import API from "../../utils/API"
 
 import {
   GoogleMap,
@@ -74,8 +75,9 @@ export default function Map() {
   if (!isLoaded) return "Loading Map";
   return (
     <div className="map">
-      <Search panTo={panTo} />
-      <Locate panTo={panTo} />
+      <Search />
+      {/* panTo={panTo} */}
+      <Locate />
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={center}
@@ -118,26 +120,40 @@ export default function Map() {
     </div>
   );
 }
-function Locate({ panTo }) {
+
+ const HandleSubmit= async() =>{
+   console.log("clicked!!!")
+// const token = await API.getOAuthToken();
+const petdata = await API.getLocalPets();
+// console.log("OAUTHTOKEN")
+// console.log(token);
+console.log("PETDATA");
+console.log(petdata);
+}
+// function getPosition(){
+//   () => {
+//     navigator.geolocation.getCurrentPosition(
+//       (position) => {
+//         panTo({
+//           lat: position.coords.latitude,
+//           lng: position.coords.longitude,
+//         });
+//       },
+//       () => null
+//     );
+//   }
+// }
+
+function Locate() {
   return (
     <button
-      onClick={() => {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            panTo({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude,
-            });
-          },
-          () => null
-        );
-      }}
+      onClick={HandleSubmit}
     >
       Find Pets Around Me
     </button>
   );
 }
-function Search({ panTo }) {
+function Search() {
   const {
     ready,
     value,
@@ -163,7 +179,7 @@ function Search({ panTo }) {
           try {
             const results = await getGeocode({ address });
             const { lat, lng } = await getLatLng(results[0]);
-            panTo({ lat, lng });
+            // panTo({ lat, lng });
             console.log(lat, lng);
           } catch (error) {
             console.log(error);
