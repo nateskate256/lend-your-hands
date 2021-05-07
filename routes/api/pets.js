@@ -3,7 +3,7 @@ const axios = require('axios');
 
 router.get("/", async (req, res) => {
     try {
-        const response = await axios.get("https://api.petfinder.com/v2/animals?location=arizona&limit=15", { headers: { "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJSdVBPbVpIY3FLWEVGclRmZGwyN25vYjR6VVVFaDhra3BuUFdsRkJRUWRlODlFVmNhMiIsImp0aSI6ImNmNjRiZGQ4MzcwMmUzMWRkMTA2NWQ0MTgxMjMwODRlNzM5ZjZjNTc5YjMxMTIyMDM4OWQ3YWZhMjkzMDM0ZTc3N2MzMDlkYTE4ZDBlNTlkIiwiaWF0IjoxNjIwNDEwNzc3LCJuYmYiOjE2MjA0MTA3NzcsImV4cCI6MTYyMDQxNDM3Nywic3ViIjoiIiwic2NvcGVzIjpbXX0.VsSHhR1WshwFASFyWSgsIaZABYEYlXlZ1k_uLuIEs-UlqSrUYUQrjF164miegolbtZCWMLpl8nGhgGEkv-7bud2dniEnc4c2DKq3ySbdfjQ_MQZgo_24ldezbrhdWrAUXAFzDy_yzaBTqtqNnygbwOl08zA6UC21HC_-mWtReMsH-aa4GRBLYb4vlLRZEQIeEfW7muuVgRgIIvV-bjFaipbhvfHkN9AwsGNZ18uGBQBG433lT1tuyQEGYfk9YCPi8wgiZ-_OCt-oS1aMyhMbiYHbNc4NM_P--puQffyk-qsSjbZZhjwWiGwFdpwHLikzQ7g6s2Mxci-99oVBnzMfEw" } })
+        const response = await axios.get("https://api.petfinder.com/v2/animals?location=arizona&limit=15", { headers: { "Authorization": `Bearer ${token} ` }})
         res.json(response.data)
     } catch (err) {
         console.log(err)
@@ -12,24 +12,18 @@ router.get("/", async (req, res) => {
 
 router.get('/token', async (req, res) => {
     try {
-        const response = await axios({
 
-            url: "https://api.petfinder.com/v2/oauth/token",
-            method: "POST",
-            headers: {
-                "Content-Type": "x-www-form-urlencoded"
-            },
-            data: {
-                client_id: "RuPOmZHcqKXEFrTfdl27nob4zUUEh8kkpnPWlFBQQde89EVca2",
-                client_secret: "rzk6a0134syYve69kDPw3zDHJO44db7Bw4BAM5SU",
-                grant_type: "client_credentials"
-            },
-        });
-        // let token = response.access_token;
-        // let tokenType = response.token_type;
-        // let expires = new Date().getTime() + (response.expires_in * 1000)
-        res.json(response)
-    } catch (err) {
+     const response = await axios
+  .post("https://api.petfinder.com/v2/oauth2/token", {
+    grant_type: "client_credentials",
+    client_id: "RuPOmZHcqKXEFrTfdl27nob4zUUEh8kkpnPWlFBQQde89EVca2",
+    client_secret: "rzk6a0134syYve69kDPw3zDHJO44db7Bw4BAM5SU",
+  })
+    console.log(response.data.access_token);
+      
+        res.json(response.data)
+    
+     } catch (err) {
         console.log(err)
     }
 })
@@ -37,60 +31,4 @@ router.get('/token', async (req, res) => {
 
 
 module.exports = router;
-
-// const { default: Axios } = require("axios");
-// import { useState } from "react";
-
-// const router = require("express").Router();
-
-// state = { location };
-// const [petData, setpetData] = useState("");
-// let token,
-//   tokenType,
-//   expires = "";
-// const location = this.state.location;
-
-// const getOAuth = async () => {
-//   try {
-//     const getToken = await Axios.post(
-//       "https://api.petfinder.com/v2/oauth2/token",
-//       {
-//         method: "POST",
-//         body: JSON.stringify({
-//           grant_type: "client_credentials",
-//           client_id: process.env.REACT_APP_PETFINDER_API,
-//           client_secret: process.env.REACT_APP_PETFINDER_SECRET,
-//         }),
-//         headers: {
-//             "Content-Type": "application/x-www-form-urlencoded",
-//           },
-//       }
-//     );
-//     getToken = getToken.json();
-//     // Store token data
-//     token = getToken.access_token;
-//     tokenType = getToken.token_type;
-//     expires = new Date().getTime() + getToken.expires_in * 1000;
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-
-// const getPetData = async () => {
-//   const response = await Axios.get(
-//     `https://api.petfinder.com/v2/animals?location=${location}&limit=50`,
-//     { headers: { Authorization: `Bearer ${token}` } }
-//   );
-//   console.log(response);
-//   setpetData(response.data);
-// };
-
-// // Make call if token expired
-// const makeCall = async () => {
-//   // If current token is invalid, get a new
-//   await getOAuth();
-//   getPetData();
-// };
-
-// makeCall();
 
