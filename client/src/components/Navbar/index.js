@@ -1,20 +1,10 @@
 import React, {useState} from "react";
 import { Navbar, Nav, Button, Modal, Form } from "react-bootstrap";
-<<<<<<< HEAD
-=======
-import emailAuth from "../../auth/email"
-import googleAuth from "../../auth/google"
-import facebookAuth from "../../auth/facebook"
-import firebase from "firebase/app";
-import { isLastDayOfMonth } from "date-fns";
->>>>>>> c3ac79254c7fb6cc6462ce11952f02abd733bb4c
 
 function CustomNav() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-<<<<<<< HEAD
-=======
   const handleSubmit = e => {
     e.preventDefault();
     console.log("username is " + username);
@@ -42,7 +32,6 @@ function setLoggedOut() {
   });
 }
 
->>>>>>> c3ac79254c7fb6cc6462ce11952f02abd733bb4c
   return (
     <>
     <Navbar bg="light" expand="lg">

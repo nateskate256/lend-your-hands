@@ -19,7 +19,7 @@ router.get('/token', async (req, res) => {
             headers: {
                 "Content-Type": "x-www-form-urlencoded"
             },
-            body: {
+            data: {
                 client_id: "RuPOmZHcqKXEFrTfdl27nob4zUUEh8kkpnPWlFBQQde89EVca2",
                 client_secret: "rzk6a0134syYve69kDPw3zDHJO44db7Bw4BAM5SU",
                 grant_type: "client_credentials"
@@ -28,7 +28,7 @@ router.get('/token', async (req, res) => {
         // let token = response.access_token;
         // let tokenType = response.token_type;
         // let expires = new Date().getTime() + (response.expires_in * 1000)
-        res.json(response.data.access_token)
+        res.json(response)
     } catch (err) {
         console.log(err)
     }
