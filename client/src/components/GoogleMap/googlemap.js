@@ -1,7 +1,7 @@
 import React from "react";
 import mapStyles from "./mapStyles";
 import API from "../../utils/API"
-
+import Petable from "../Table"
 import {
   GoogleMap,
   useLoadScript,
@@ -51,6 +51,9 @@ export default function Map() {
 
   const [selected, setSelected] = React.useState(null);
   const [markers, setMarkers] = React.useState([]);
+ 
+
+  
   const onMapClick = React.useCallback((event) => {
     setMarkers((current) => [
       ...current,
@@ -77,7 +80,7 @@ export default function Map() {
     <div className="map">
       <Search />
       {/* panTo={panTo} */}
-      <Locate />
+      {/* <Locate /> */}
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={center}
@@ -100,6 +103,7 @@ export default function Map() {
             }}
           />
         ))}
+        
         {selected ? (
           <InfoWindow
             position={{ lat: selected.lat, lng: selected.lng }}
@@ -121,17 +125,17 @@ export default function Map() {
   );
 }
 
- const HandleSubmit= async() =>{
-   console.log("clicked!!!")
-let token = await API.getOAuthToken();
-token = token.data.access_token
-let petdata = await API.getLocalPets(token);
- petdata = petdata.data.animals
-console.log("OAUTHTOKEN")
-console.log(token);
-console.log("PETDATA");
-console.log(petdata);
-}
+//  const HandleSubmit= async() =>{
+//    console.log("clicked!!!")
+// let token = await API.getOAuthToken();
+// token = token.data.access_token
+// let petdata = await API.getLocalPets(token);
+//  petdata = petdata.data.animals
+// console.log("OAUTHTOKEN")
+// console.log(token);
+// console.log("PETDATA");
+// console.log(petdata);
+// }
 // function getPosition(){
 //   () => {
 //     navigator.geolocation.getCurrentPosition(
@@ -146,16 +150,17 @@ console.log(petdata);
 //   }
 // }
 
-function Locate() {
-  return (
-    <button
-      onClick={HandleSubmit}
-    >
-      Find Pets Around Me
-    </button>
-  );
-}
+// function Locate() {
+//   return (
+//     <button
+//       onClick={HandleSubmit}
+//     >
+//       Find Pets Around Me
+//     </button>
+//   );
+// }
 function Search() {
+  const [pets, setPets] = React.useState([]);
   const {
     ready,
     value,
@@ -171,6 +176,32 @@ function Search() {
   const handleInput = (e) => {
     setValue(e.target.value);
   };
+
+  const HandleSubmit= async() =>{
+    console.log("clicked!!!")
+ let token = await API.getOAuthToken();
+ token = token.data.access_token
+ let petdata = await API.getLocalPets(token, value);
+  petdata = petdata.data.animals
+ console.log("OAUTHTOKEN")
+ console.log(token);
+ console.log("PETDATA");
+ console.log(petdata);
+ setPets(petdata);
+    // renderPeter(petData)
+ }
+
+ //renderPets(petData) {
+  //  return ()
+  //  <Table>
+  // // MAP OVER THE pets and render a new component
+  //   // petData.map(pet =>
+  //   //   <TableRow petInfo = {pet}
+  //   // )
+  //  </Table> 
+
+
+// }
 
   return (
     <div>
@@ -190,10 +221,16 @@ function Search() {
       >
         <ComboboxInput
           value={value}
+          // value={location}
           onChange={handleInput}
           disabled={!ready}
           placeholder="Search your location"
         />
+        <button
+      onClick={HandleSubmit}
+    >
+      Find Pets Around Me
+    </button>
         <ComboboxPopover>
           <ComboboxList>
             {status === "OK" &&
@@ -203,6 +240,9 @@ function Search() {
           </ComboboxList>
         </ComboboxPopover>
       </Combobox>
+      {pets.length !== 0 &&
+            <Petable pets={pets} />
+        }
     </div>
   );
 }

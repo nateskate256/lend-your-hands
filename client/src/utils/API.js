@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default {
-  getLocalPets: function () {
-    return axios.get("/api/pets")
+  getLocalPets: function (token, value) {
+    return axios.get("/api/pets", {params: { token: token, location: value}})
   },
 
   getOAuthToken: function (){

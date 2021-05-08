@@ -2,14 +2,15 @@ import React from "react";
 import { Table } from "react-bootstrap";
 
 // import { get } from "mongoose";
-// const style = {
-//   imageStyle: {
-//     width: "50px",
-//     height: "50px",
-//   },
-// };
+const style = {
+  imageStyle: {
+    width: "50px",
+    height: "50px",
+  },
+};
 
-function Petable() {
+function Petable({ pets }) {
+  console.log("PETS IN TABLE: ", pets)
   return (
     <Table striped>
       <thead>
@@ -27,15 +28,16 @@ function Petable() {
         </tr>
       </thead>
 
-      {/* <tbody>
-        {props.animals[i].map((data) => {
+
+      <tbody>
+        {pets.map((data => {
           return (
             <tr>
               <td>
                 <img
                   style={style.imageStyle}
                   src="/images/paw.jpeg"
-                  onClick={}
+                  // onClick={ }
                 ></img>
               </td>
               <td>{data.name}</td>
@@ -49,10 +51,10 @@ function Petable() {
               <td>{data.status}</td>
               <td>{data.contact.phone}</td>
               <td>{data.date}</td>
-            </tr> */}
-          {/* );
-        })}
-      </tbody> */}
+            </tr>
+          )
+        }))}
+      </tbody>
     </Table>
   );
 }
