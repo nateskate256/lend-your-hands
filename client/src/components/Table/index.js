@@ -15,25 +15,37 @@ function Petable({ pets = [] }) {
     <Table striped>
       <thead>
         <tr>
-          <th scope="col">Save</th>
+          <th scope="col">Photo</th>
           <th scope="col">Name</th>
           <th scope="col">Type</th>
           <th scope="col">Breed</th>
           <th scope="col">Gender</th>
           <th scope="col">Age</th>
-          <th scope="col">Photo</th>
           <th scope="col">Status</th>
           <th scope="col">Phone</th>
-          <th scope="col">Date</th>
+          <th scope="col">Date Posted</th>
+          <th scope="col">Save</th>
         </tr>
       </thead>
 
       <tbody>
         {pets.map((data) => {
-          console.log("DATA", data[0])
+          console.log("DATA", data)
           console.log("DATA.NAME", data.name)
+          console.log("PHOTOS[0]", data.photos[0])
           return (
             <tr>
+              <td>
+                <img src={data.photos.small} alt={data.name} />
+              </td>
+              <td>{data.name}</td>
+              <td>{data.type}</td>
+              <td>{data.breeds.primary}</td>
+              <td>{data.gender}</td>
+              <td>{data.age}</td>
+              <td>{data.status}</td>
+              <td>{data.contact.phone}</td>
+              <td>{data.published_at.slice(0,10)}</td>
               <td>
                 <img
                   style={style.imageStyle}
@@ -41,18 +53,6 @@ function Petable({ pets = [] }) {
                   // onClick={}
                 ></img>
               </td>
-              <td>{data[0].name}</td>
-              <td>{data.type}</td>
-              <td>{data.breeds}</td>
-              <td>{data.breeds}</td>
-              <td>{data.gender}</td>
-              <td>{data.age}</td>
-              <td>
-                {/* <img src={data.photo.thumbnail} alt="animal" /> */}
-              </td>
-              <td>{data.status}</td>
-              {/* <td>{data.contact.phone}</td> */}
-              <td>{data.date}</td>
             </tr>
            );
         })}

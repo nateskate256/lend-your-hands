@@ -12,7 +12,7 @@ function PetContainer() {
     console.log("TOKEN", token)
     let petdata = await API.getLocalPets(token, value);
     petdata = petdata.data.animals;
-    setPets([petdata]);
+    setPets(petdata);
   };
   
   console.log("PETS", pets)

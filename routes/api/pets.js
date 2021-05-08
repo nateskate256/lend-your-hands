@@ -1,9 +1,20 @@
 const router = require("express").Router();
 const axios = require('axios');
 
+// router.get("/", async (req, res) => {
+//     try {
+//         const response = await axios.get("https://api.petfinder.com/v2/animals?location=arizona&limit=15", { headers: { "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJSdVBPbVpIY3FLWEVGclRmZGwyN25vYjR6VVVFaDhra3BuUFdsRkJRUWRlODlFVmNhMiIsImp0aSI6IjBjODcwOTMyYjNiNGQwMjQ0OGRlNTMxZTAxZTAxMmM4Y2VkNmNjNTE1OWI1ZWNjMjU3MjNjODJmOGVjYzA0MTkwMjQyYjZkNTBjYzcwMzY0IiwiaWF0IjoxNjIwNTA1NTE1LCJuYmYiOjE2MjA1MDU1MTUsImV4cCI6MTYyMDUwOTExNSwic3ViIjoiIiwic2NvcGVzIjpbXX0.kAz0pXRsTdfupqQNh-pYO7i-D4FZvRq7Ll2adi1QwRqIUAPkWdsV6FkSKChnnQOlEk6qS58PKMRD5c-KWYkGcb4wQd0h8Dz6sVWOKLti1uGduZD52p5yrrD09pAqKub8GHV2kJmga6mfpGdMgVc51KI0zQKAFWeq0Gpl0phKp3tdRBlZ7BpRdlwc9SvlknbKp_ej9PSKgMl418A09QaYp8LIfTwgQ7S1sizlbLa0Eq0vuLV9hb6F9nmDCbLxI7IiLJhxEyG9wegtej_XtE92qT3E_196iHrUS90ssNQAR3jFigcFJfYMM40Pw-JTIANXS7Is-x1HkU_ZO-1k8hlUxg ` }})
+//         res.json(response.data)
+//     } catch (err) {
+//         console.log(err)
+//     }
+// })
+
 router.get("/", async (req, res) => {
+    console.log("REQUEST BODY: ",req.query)
+   
     try {
-        const response = await axios.get("https://api.petfinder.com/v2/animals?location=arizona&limit=15", { headers: { "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiJSdVBPbVpIY3FLWEVGclRmZGwyN25vYjR6VVVFaDhra3BuUFdsRkJRUWRlODlFVmNhMiIsImp0aSI6IjEwOTk1NTdlZGM0NWQ0OWM5OWExMzYyYjk0YWRlNGU4MWE4MWM2YWI2NTNjMzM5ZWNlYjA0NmJhNDVlZDU4ODQ2NjY1Y2MwYjg1Njc1NWI3IiwiaWF0IjoxNjIwNTAxNjQ5LCJuYmYiOjE2MjA1MDE2NDksImV4cCI6MTYyMDUwNTI0OSwic3ViIjoiIiwic2NvcGVzIjpbXX0.NPJN_B4WfQA69xhwTXnq9NvZ5Z2i6VnmwV9_roMabxITsl7jft-ercAnI_yrl_HvcB9sH_MjFYO_qzQN8_Y-uxyIb2IdlolFInVDk9RRfLt28w56Z2iHVuqjL8F28zaFbmNfGgN58_sR3mA2ctdf2jrVi5_B6VTxToY6RfgarcneSj4JFgR5LyoYKJrbHJcX40yyghBe6JLZ5S5RjZ3rhHHUqaG4pZK672rgU2ZhbnuOUcTU5V6DmJC0oaXcnQ4Yh0zXgePRhm5_yPH5xfjrSMHjoaqsMAICkJH9__iYSXJt1eHGkP1IZT-WOro_fh6sZPr_yFL6ee3pJ6PvMwdGaw ` }})
+        const response = await axios.get(`https://api.petfinder.com/v2/animals?location=${req.query.location}&limit=20`, { headers: { "Authorization": `Bearer ${req.query.token} ` }})
         res.json(response.data)
     } catch (err) {
         console.log(err)
