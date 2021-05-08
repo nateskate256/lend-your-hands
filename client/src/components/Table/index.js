@@ -1,7 +1,7 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-
 // import { get } from "mongoose";
+
 const style = {
   imageStyle: {
     width: "50px",

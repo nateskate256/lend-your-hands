@@ -1,3 +1,3 @@
 module.exports = {
-    Animals: require("./animals/models")
+    Animals: require("./animals")
 };
