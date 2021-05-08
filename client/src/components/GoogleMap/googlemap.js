@@ -119,7 +119,7 @@ export default function Map() {
           </InfoWindow>
         ) : null}
       </GoogleMap>
-      <HandleSubmit />
+      <Locate />
     </div>
   );
 }
@@ -136,6 +136,7 @@ const HandleSubmit = async () => {
   console.log(petdata);
   return (
     <Petable {...petdata }/>
+   
   )
 };
 

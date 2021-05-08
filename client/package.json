@@ -1,8 +1,8 @@
 {
-  "proxy":"http://localhost:3050",
   "name": "paw-prints",
   "version": "0.1.0",
   "private": true,
+  "proxy":"http://localhost:3050",
   "dependencies": {
     "@reach/combobox": "^0.15.1",
     "@react-google-maps/api": "^2.1.1",

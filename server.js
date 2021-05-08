@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pawprints");
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://admin:wkbvDvVh6C0uiJcw@cluster0.mluh9.mongodb.net/pawprints?retryWrites=true&w=majority");
 
 // Start the API server
 app.listen(PORT, function () {

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pawprints");
+mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://admin:wkbvDvVh6C0uiJcw@cluster0.mluh9.mongodb.net/pawprints?retryWrites=true&w=majority");
 
 const animalSeeds = [
   {
@@ -42,8 +42,8 @@ const animalSeeds = [
   },
 ];
 
-db.Pawprints.remove({})
-  .then(() => db.Pawprints.collection.insertMany(animalSeeds))
+db.Animals.deleteMany({})
+  .then(() => db.Animals.collection.insertMany(animalSeeds))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
