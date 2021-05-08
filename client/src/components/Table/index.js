@@ -9,8 +9,8 @@ const style = {
   },
 };
 
-function Petable({ pets }) {
-  console.log("PETS IN TABLE: ", pets)
+function Petable({ pets = [] }) {
+  console.log("PETS IN TABLE: ", pets);
   return (
     <Table striped>
       <thead>
@@ -28,9 +28,8 @@ function Petable({ pets }) {
         </tr>
       </thead>
 
-
       <tbody>
-        {pets.map((data => {
+        {pets.map((data) => {
           return (
             <tr>
               <td>
@@ -52,8 +51,8 @@ function Petable({ pets }) {
               <td>{data.contact.phone}</td>
               <td>{data.date}</td>
             </tr>
-          )
-        }))}
+          );
+        })}
       </tbody>
     </Table>
   );

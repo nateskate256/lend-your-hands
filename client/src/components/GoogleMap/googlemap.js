@@ -1,7 +1,5 @@
 import React from "react";
 import mapStyles from "./mapStyles";
-import API from "../../utils/API"
-import Petable from "../Table"
 import {
   GoogleMap,
   useLoadScript,
@@ -9,17 +7,7 @@ import {
   InfoWindow,
 } from "@react-google-maps/api";
 import { formatRelative } from "date-fns";
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from "use-places-autocomplete";
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxPopover,
-  ComboboxList,
-  ComboboxOption,
-} from "@reach/combobox";
+
 import "@reach/combobox/styles.css";
 import pawPrintPin from "../GoogleMap/icon/pawPrintPin.png";
 import dogImg from "../GoogleMap/icon/Dog.jpeg";
@@ -43,6 +31,7 @@ const center = {
   lng: -112.0763359855901,
 };
 const libraries = ["places"];
+
 export default function Map() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_AP_KEY,
@@ -51,9 +40,7 @@ export default function Map() {
 
   const [selected, setSelected] = React.useState(null);
   const [markers, setMarkers] = React.useState([]);
- 
 
-  
   const onMapClick = React.useCallback((event) => {
     setMarkers((current) => [
       ...current,
@@ -78,7 +65,6 @@ export default function Map() {
   if (!isLoaded) return "Loading Map";
   return (
     <div className="map">
-      <Search />
       {/* panTo={panTo} */}
       {/* <Locate /> */}
       <GoogleMap
@@ -103,7 +89,7 @@ export default function Map() {
             }}
           />
         ))}
-        
+
         {selected ? (
           <InfoWindow
             position={{ lat: selected.lat, lng: selected.lng }}
@@ -121,128 +107,6 @@ export default function Map() {
           </InfoWindow>
         ) : null}
       </GoogleMap>
-    </div>
-  );
-}
-
-//  const HandleSubmit= async() =>{
-//    console.log("clicked!!!")
-// let token = await API.getOAuthToken();
-// token = token.data.access_token
-// let petdata = await API.getLocalPets(token);
-//  petdata = petdata.data.animals
-// console.log("OAUTHTOKEN")
-// console.log(token);
-// console.log("PETDATA");
-// console.log(petdata);
-// }
-// function getPosition(){
-//   () => {
-//     navigator.geolocation.getCurrentPosition(
-//       (position) => {
-//         panTo({
-//           lat: position.coords.latitude,
-//           lng: position.coords.longitude,
-//         });
-//       },
-//       () => null
-//     );
-//   }
-// }
-
-// function Locate() {
-//   return (
-//     <button
-//       onClick={HandleSubmit}
-//     >
-//       Find Pets Around Me
-//     </button>
-//   );
-// }
-function Search() {
-  const [pets, setPets] = React.useState([]);
-  const {
-    ready,
-    value,
-    suggestions: { status, data },
-    setValue,
-    clearSuggestions,
-  } = usePlacesAutocomplete({
-    requestOptions: {
-      location: { lat: () => 33.43909225753613, lng: () => -112.0763359855901 },
-      radius: 1000 * 1000,
-    },
-  });
-  const handleInput = (e) => {
-    setValue(e.target.value);
-  };
-
-  const HandleSubmit= async() =>{
-    console.log("clicked!!!")
- let token = await API.getOAuthToken();
- token = token.data.access_token
- let petdata = await API.getLocalPets(token, value);
-  petdata = petdata.data.animals
- console.log("OAUTHTOKEN")
- console.log(token);
- console.log("PETDATA");
- console.log(petdata);
- setPets(petdata);
-    // renderPeter(petData)
- }
-
- //renderPets(petData) {
-  //  return ()
-  //  <Table>
-  // // MAP OVER THE pets and render a new component
-  //   // petData.map(pet =>
-  //   //   <TableRow petInfo = {pet}
-  //   // )
-  //  </Table> 
-
-
-// }
-
-  return (
-    <div>
-      <Combobox
-        onSelect={async (address) => {
-          setValue(address, false);
-          clearSuggestions();
-          try {
-            const results = await getGeocode({ address });
-            const { lat, lng } = await getLatLng(results[0]);
-            // panTo({ lat, lng });
-            console.log(lat, lng);
-          } catch (error) {
-            console.log(error);
-          }
-        }}
-      >
-        <ComboboxInput
-          value={value}
-          // value={location}
-          onChange={handleInput}
-          disabled={!ready}
-          placeholder="Search your location"
-        />
-        <button
-      onClick={HandleSubmit}
-    >
-      Find Pets Around Me
-    </button>
-        <ComboboxPopover>
-          <ComboboxList>
-            {status === "OK" &&
-              data.map(({ id, description }) => (
-                <ComboboxOption key={id} value={description} />
-              ))}
-          </ComboboxList>
-        </ComboboxPopover>
-      </Combobox>
-      {pets.length !== 0 &&
-            <Petable pets={pets} />
-        }
     </div>
   );
 }
