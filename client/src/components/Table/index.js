@@ -9,8 +9,8 @@ const style = {
   },
 };
 
-function Petable(props) {
-  console.log (props)
+function Petable({ pets = [] }) {
+  console.log("PETS IN TABLE: ", pets);
   return (
     <Table striped>
       <thead>
@@ -28,32 +28,35 @@ function Petable(props) {
         </tr>
       </thead>
 
-      {/* <tbody>
-        {props.data.animals[0].map((data) => {
+      <tbody>
+        {pets.map((data) => {
+          console.log("DATA", data[0])
+          console.log("DATA.NAME", data.name)
           return (
             <tr>
               <td>
                 <img
                   style={style.imageStyle}
                   src="/images/paw.jpeg"
-                  onClick={}
+                  // onClick={}
                 ></img>
               </td>
-              <td>{data.name}</td>
+              <td>{data[0].name}</td>
               <td>{data.type}</td>
+              <td>{data.breeds}</td>
               <td>{data.breeds}</td>
               <td>{data.gender}</td>
               <td>{data.age}</td>
               <td>
-                <img src={data.photo.thumbnail} alt="animal" />
+                {/* <img src={data.photo.thumbnail} alt="animal" /> */}
               </td>
               <td>{data.status}</td>
-              <td>{data.contact.phone}</td>
+              {/* <td>{data.contact.phone}</td> */}
               <td>{data.date}</td>
             </tr>
            );
         })}
-      </tbody> */}
+      </tbody>
     </Table>
   );
 }

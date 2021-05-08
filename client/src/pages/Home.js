@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import CustomNav from "../components/Navbar";
 import Jumbo from "../components/Jumbotron";
-import Table from "../components/Table";
-import GoogleMaps from "../components/GoogleMap/googlemap";
 import firebase from "firebase/app";
+import PetContainer from "../components/PetContainer";
 
 
 function Home() {
@@ -18,7 +17,7 @@ function Home() {
       <Jumbo />
       {isLoggedin ? (
         <>
-          <GoogleMaps />
+          <PetContainer />
         </>
       ) : (
         <p></p>
