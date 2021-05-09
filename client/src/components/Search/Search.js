@@ -54,7 +54,7 @@ function Search({ handleSubmit }) {
           // value={location}
           onChange={handleInput}
           disabled={false} // ready state is inconsistent hard coded to true
-          placeholder="Search your location"
+          placeholder="Type Zip or City, State"
         />
         <button className="findPetsBtn"onClick={() => handleSubmit(value)}>Find Pets Around Me</button>
         <ComboboxPopover>
