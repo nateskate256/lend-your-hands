@@ -1,6 +1,7 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 // import { get } from "mongoose";
+import firebase from "firebase/app";
 
 const style = {
   imageStyle: {
@@ -8,7 +9,26 @@ const style = {
     height: "50px",
   },
 };
+function savePetData(data) {
+  const body = {
+    uuid: firebase.auth().currentUser.uid,
+    pet: {
+      id: data.id,
+      name: data.name,
+      type: data.type,
+      breeds: data.breeds.primary,
+      gender: data.gender,
+      age: data.age,
+      photo: data.photos[0].small,
+      status: data.status,
 
+      contact: data.contact.phone,
+      date: data.published_at.slice(0, 10),
+    },
+  };
+
+  console.log(body);
+}
 function Petable({ pets = [] }) {
   console.log("PETS IN TABLE: ", pets);
   return (
@@ -30,13 +50,20 @@ function Petable({ pets = [] }) {
 
       <tbody>
         {pets.map((data) => {
-          console.log("DATA", data)
-          console.log("DATA.NAME", data.name)
-          console.log("PHOTOS[0]", data.photos[0])
+          console.log("DATA", data);
+          console.log("DATA.NAME", data.name);
+          console.log("PHOTOS[0]", data.photos[0]);
           return (
-            <tr>
+            <tr key={data.id}>
               <td>
-                <img src={data.photos.small} alt={data.name} />
+                <img
+                  src={
+                    data.photos.length !== 0
+                      ? data.photos[0].small
+                      : "https://placekitten.com/50/50"
+                  }
+                  alt={data.name}
+                />
               </td>
               <td>{data.name}</td>
               <td>{data.type}</td>
@@ -45,16 +72,16 @@ function Petable({ pets = [] }) {
               <td>{data.age}</td>
               <td>{data.status}</td>
               <td>{data.contact.phone}</td>
-              <td>{data.published_at.slice(0,10)}</td>
+              <td>{data.published_at.slice(0, 10)}</td>
               <td>
                 <img
                   style={style.imageStyle}
                   src="/images/paw.jpeg"
-                  // onClick={}
+                  onClick={() => savePetData(data)}
                 ></img>
               </td>
             </tr>
-           );
+          );
         })}
       </tbody>
     </Table>
