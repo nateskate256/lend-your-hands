@@ -44,8 +44,11 @@ function setLoggedOut() {
   return (
     <>
     <Navbar className="centerText" expand="lg">
-      <Navbar.Brand className="navPad" href="#home">🐴 🐶 🐱 🐰 Paw Prints🐹 🐦 🐢 🦎 🐟</Navbar.Brand>
+      <Navbar.Brand className="navPad" href="/">🐴 🐶 🐱 🐰 Paw Prints🐹 🐦 🐢 🦎 🐟</Navbar.Brand>
       <Nav className="mr-auto">
+      <Button variant="" href="/Favorite">
+        Favorites
+      </Button>
         {isLoggedin ? (
       <Button variant="" onClick={setLoggedOut}>
         Log Out

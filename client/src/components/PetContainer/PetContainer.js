@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Table from "../Table";
-import GoogleMaps from "../GoogleMap/googlemap";
+// import GoogleMaps from "../GoogleMap/googlemap";
 import API from "../../utils/API";
 import Search from "../Search";
 
