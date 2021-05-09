@@ -7,6 +7,10 @@ export default {
 
   getOAuthToken: function (){
     return axios.get("/api/pets/token")
+  },
+
+  fetchFavs: function(){
+    return axios.get("/api/favorites")
   }
 
 

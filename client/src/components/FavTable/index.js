@@ -1,32 +1,28 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Table } from "react-bootstrap";
 // import { get } from "mongoose";
 import firebase from "firebase/app";
+import API from "../../utils/API"
 
-function savePetData(data) {
-  const body = {
-    uuid: firebase.auth().currentUser.uid,
-    pet: {
-      id: data.id,
-      name: data.name,
-      type: data.type,
-      breeds: data.breeds.primary,
-      gender: data.gender,
-      age: data.age,
-      photo: data.photos[0].small,
-      status: data.status,
 
-      contact: data.contact.phone,
-      date: data.published_at.slice(0, 10),
-    },
-  };
 
-  console.log(body);
-  
-}
-function Petable({ pets = [] }) {
-  console.log("PETS IN TABLE: ", pets);
+function FavTable({}) {
+    const [pets, setPets]= useState([]);
+
+    useEffect(()=>{
+        loadFavs();
+    });
+
+    function loadFavs(){
+        API.fetchFavs().then(data =>{
+            console.log("DATA.DATA")
+            console.log(data.data);
+            setPets(data.data)
+        })
+    }
+
   return (
+      <div className="tableCont">
     <Table className="table" striped>
       <thead>
         <tr>
@@ -47,18 +43,18 @@ function Petable({ pets = [] }) {
         {pets.map((data) => {
           console.log("DATA", data);
           console.log("DATA.NAME", data.name);
-          console.log("PHOTOS[0]", data.photos[0]);
+        //   console.log("PHOTOS[0]", data.photos[0]);
           return (
             <tr key={data.id}>
               <td>
-                <img
+                {/* <img
                   src={
                     data.photos.length !== 0
                       ? data.photos[0].small
                       : "https://placekitten.com/50/50"
                   }
                   alt={data.name}
-                />
+                /> */}
               </td>
               <td>{data.name}</td>
               <td>{data.type}</td>
@@ -66,20 +62,21 @@ function Petable({ pets = [] }) {
               <td>{data.gender}</td>
               <td>{data.age}</td>
               <td>{data.status}</td>
-              <td>{data.contact.phone}</td>
-              <td>{data.published_at.slice(0, 10)}</td>
+              {/* <td>{data.contact.phone}</td> */}
+              {/* <td>{data.published_at.slice(0, 10)}</td> */}
               <td>
-                <img className="imgStyle"
+                {/* <img className="imgStyle"
                   
                   src="/images/paw_print.png"
-                  onClick={() => savePetData(data)}
-                ></img>
+                //   onClick={() => savePetData(data)}
+                ></img> */}
               </td>
             </tr>
           );
         })}
       </tbody>
     </Table>
+    </div>
   );
 }
-export default Petable;
+export default FavTable;
