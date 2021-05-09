@@ -49,13 +49,14 @@ function Search({ handleSubmit }) {
         }}
       >
         <ComboboxInput
+          className="inputBox"
           value={value}
           // value={location}
           onChange={handleInput}
           disabled={false} // ready state is inconsistent hard coded to true
           placeholder="Search your location"
         />
-        <button onClick={() => handleSubmit(value)}>Find Pets Around Me</button>
+        <button className="findPetsBtn"onClick={() => handleSubmit(value)}>Find Pets Around Me</button>
         <ComboboxPopover>
           <ComboboxList>
             {status === "OK" &&

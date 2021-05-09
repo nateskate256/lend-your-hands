@@ -46,5 +46,55 @@ code {
   display: flex;
   /* flex-direction: column; */
   /* align-items: center; */
-  justify-content: flex-end;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 30px
+}
+
+.table {
+  width: 60%
+}
+.tableCont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding:10px;
+}
+
+.findPetsBtn {
+  background-color: #7EBAE6;
+  margin-top: 20px;
+  margin-left: 10px;
+  padding: 8px;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  margin-bottom: 20px;
+}
+
+.findPetsBtn:hover {
+  background-color: #5c87a7;
+}
+
+.inputBox {
+  padding: 5px;
+  border-radius: 7px;
+  border: none;
+}
+
+.navBar {
+  background-color: none;
+}
+
+tr:nth-child(even) {background: #7EBAE6}
+tr:nth-child(odd) {background: #FFF}
+
+.imgStyle {
+  width: 50px;
+  height: 50px;
+}
+
+.imgStyle:hover {
+  height: 55px;
+  width: 55px;
 }

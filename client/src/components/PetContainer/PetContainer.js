@@ -17,11 +17,11 @@ function PetContainer() {
   
   console.log("PETS", pets)
   return (
-    <>
+    <div className="tableCont">
       <Search handleSubmit={handleSubmit} />
       <Table pets={pets} />
       {/* <GoogleMaps pets={pets} /> */}
-    </>
+    </div>
   );
 }
 
