@@ -200,7 +200,7 @@ export default [
     elementType: "all",
     stylers: [
       {
-        color: "#eaf6f8",
+        color: "#7EBAE6",
       },
       {
         visibility: "on",

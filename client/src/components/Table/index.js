@@ -65,11 +65,18 @@ function Petable({ pets = [] }) {
               <td>{data.gender}</td>
               <td>{data.age}</td>
               <td>{data.status}</td>
-              <td>{data.contact.phone}</td>
+              <td>
+                {" "}
+                {data.contact.phone !== null ? (
+                  data.contact.phone
+                ) : (
+                  <p>No Phone Provided</p>
+                )}
+              </td>
               <td>{data.published_at.slice(0, 10)}</td>
               <td>
-                <img className="imgStyle"
-                  
+                <img
+                  className="imgStyle"
                   src="/images/paw_print.png"
                   onClick={() => savePetData(data)}
                 ></img>

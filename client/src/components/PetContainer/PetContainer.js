@@ -9,18 +9,18 @@ function PetContainer() {
   const handleSubmit = async (value) => {
     let token = await API.getOAuthToken();
     token = token.data.access_token;
-    console.log("TOKEN", token)
+    console.log("TOKEN", token);
     let petdata = await API.getLocalPets(token, value);
     petdata = petdata.data.animals;
     setPets(petdata);
   };
-  
-  console.log("PETS", pets)
+
+  console.log("PETS", pets);
   return (
     <div className="tableCont">
       <Search handleSubmit={handleSubmit} />
       <Table pets={pets} />
-      {/* <GoogleMaps pets={pets} /> */}
+      <GoogleMaps pets={pets} />
     </div>
   );
 }
