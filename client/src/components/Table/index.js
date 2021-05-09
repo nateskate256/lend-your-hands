@@ -3,12 +3,6 @@ import { Table } from "react-bootstrap";
 // import { get } from "mongoose";
 import firebase from "firebase/app";
 
-const style = {
-  imageStyle: {
-    width: "50px",
-    height: "50px",
-  },
-};
 function savePetData(data) {
   const body = {
     uuid: firebase.auth().currentUser.uid,
@@ -32,7 +26,7 @@ function savePetData(data) {
 function Petable({ pets = [] }) {
   console.log("PETS IN TABLE: ", pets);
   return (
-    <Table striped>
+    <Table className="table" striped>
       <thead>
         <tr>
           <th scope="col">Photo</th>
@@ -74,9 +68,9 @@ function Petable({ pets = [] }) {
               <td>{data.contact.phone}</td>
               <td>{data.published_at.slice(0, 10)}</td>
               <td>
-                <img
-                  style={style.imageStyle}
-                  src="/images/paw.jpeg"
+                <img className="imgStyle"
+                  
+                  src="/images/paw_print.png"
                   onClick={() => savePetData(data)}
                 ></img>
               </td>
