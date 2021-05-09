@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import CustomNav from "../components/Navbar";
 import FavJumbo from "../components/FavoriteJumbo";
 import firebase from "firebase/app";
-import PetContainer from "../components/PetContainer";
+import FavTable from "../components/FavTable";
 
 
 function Favorite() {
@@ -17,7 +17,7 @@ function Favorite() {
         <FavJumbo />
         {isLoggedin ? (
           <>
-            <PetContainer />
+            <FavTable />
           </>
         ) : (
           <p></p>
