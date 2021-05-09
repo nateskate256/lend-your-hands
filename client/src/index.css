@@ -52,7 +52,7 @@ code {
 }
 
 .table {
-  width: 60%
+  width: 62%
 }
 .tableCont {
   display: flex;
@@ -98,3 +98,9 @@ tr:nth-child(odd) {background: #FFF}
   height: 55px;
   width: 55px;
 }
+
+/* .btnCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */
