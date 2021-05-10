@@ -1,7 +1,16 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb+srv://admin:wkbvDvVh6C0uiJcw@cluster0.mluh9.mongodb.net/pawprints?retryWrites=true&w=majority");
+mongoose.connect(
+  process.env.MONGODB_URI ||
+    "mongodb+srv://admin:wkbvDvVh6C0uiJcw@cluster0.mluh9.mongodb.net/pawprints?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  }
+);
 
 const animalSeeds = [
   {
