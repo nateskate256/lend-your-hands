@@ -18,10 +18,10 @@ router.get('/token', async (req, res) => {
      const response = await axios
   .post("https://api.petfinder.com/v2/oauth2/token", {
     grant_type: "client_credentials",
-    // client_id: "RuPOmZHcqKXEFrTfdl27nob4zUUEh8kkpnPWlFBQQde89EVca2",
-    // client_secret: "rzk6a0134syYve69kDPw3zDHJO44db7Bw4BAM5SU",
-    client_id: process.env.REACT_APP_PETFINDER_API,
-    client_secret: process.env.REACT_APP_PETFINDER_SECRET
+    client_id: "RuPOmZHcqKXEFrTfdl27nob4zUUEh8kkpnPWlFBQQde89EVca2",
+    client_secret: "rzk6a0134syYve69kDPw3zDHJO44db7Bw4BAM5SU",
+    // client_id: process.env.REACT_APP_PETFINDER_API,
+    // client_secret: process.env.REACT_APP_PETFINDER_SECRET
   })
     console.log(response.data.access_token);
       
