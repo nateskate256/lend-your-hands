@@ -1,6 +1,6 @@
 import firebaseAuth from "../firebase"
 
-export default {
+const emailAuth = {
   signInWithEmailPassword: function (email, password) {
     firebaseAuth
       .auth()
@@ -34,3 +34,5 @@ export default {
       });
   },
 };
+
+export default emailAuth;

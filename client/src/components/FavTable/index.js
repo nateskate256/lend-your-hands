@@ -6,7 +6,7 @@ import API from "../../utils/API"
 
 
 
-function FavTable({}) {
+function FavTable() {
     const [pets, setPets]= useState([]);
 
     useEffect(()=>{

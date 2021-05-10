@@ -42,7 +42,7 @@ function Petable({ pets = [] }) {
           <th scope="col">Gender</th>
           <th scope="col">Age</th>
           <th scope="col">Status</th>
-          <th scope="col">Phone</th>
+          <th scope="col">Contact</th>
           <th scope="col">Date Posted</th>
           <th scope="col">Save</th>
         </tr>
@@ -71,7 +71,8 @@ function Petable({ pets = [] }) {
               <td>{data.gender}</td>
               <td>{data.age}</td>
               <td>{data.status}</td>
-              <td>{data.contact.phone}</td>
+              {/* <td>{data.contact.phone}</td> */}
+              <td>{data.contact.phone !== null ? data.contact.phone : data.contact.email}</td>
               <td>{data.published_at.slice(0, 10)}</td>
               <td>
                 <img className="imgStyle"
