@@ -6,7 +6,7 @@ import FavTable from "../components/FavTable";
 
 
 function Favorite() {
-    const [isLoggedin, setIsLoggedIn] = React.useState(false);
+    const [isLoggedin, setIsLoggedIn] = useState(false);
     firebase.auth().onAuthStateChanged(function (user) {
       setIsLoggedIn(!!user);
     });

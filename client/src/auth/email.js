@@ -11,8 +11,8 @@ export default {
         console.log(user)
       })
       .catch((error) => {
-        var errorCode = error.code;
-        var errorMessage = error.message;
+        // var errorCode = error.code;
+        // var errorMessage = error.message;
         console.log(error)
       });
   },
@@ -27,7 +27,7 @@ export default {
         console.log(user)
       })
       .catch((error) => {
-        var errorCode = error.code;
+        // var errorCode = error.code;
         var errorMessage = error.message;
         alert(errorMessage)
         console.log(error)

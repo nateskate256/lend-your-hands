@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import { Navbar, Nav, Button, Modal, Form } from "react-bootstrap";
 import emailAuth from "../../auth/email"
-import googleAuth from "../../auth/google"
-import facebookAuth from "../../auth/facebook"
+// import googleAuth from "../../auth/google"
+// import facebookAuth from "../../auth/facebook"
 import firebase from "firebase/app";
 import "../../../src/index.css"
 

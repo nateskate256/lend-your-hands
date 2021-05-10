@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { Table } from "react-bootstrap";
 // import { get } from "mongoose";
-import firebase from "firebase/app";
+// import firebase from "firebase/app/";
 import API from "../../utils/API"
 
 
@@ -23,7 +23,7 @@ function FavTable({}) {
 
   return (
       <div className="tableCont">
-    <Table className="table" striped>
+    <Table className="table" striped bordered>
       <thead>
         <tr>
           <th scope="col">Photo</th>
@@ -35,7 +35,7 @@ function FavTable({}) {
           <th scope="col">Status</th>
           <th scope="col">Phone</th>
           <th scope="col">Date Posted</th>
-          <th scope="col">Save</th>
+          <th scope="col">Delete</th>
         </tr>
       </thead>
 
@@ -58,18 +58,19 @@ function FavTable({}) {
               </td>
               <td>{data.name}</td>
               <td>{data.type}</td>
-              <td>{data.breeds.primary}</td>
+              <td>{data.breeds}</td>
               <td>{data.gender}</td>
               <td>{data.age}</td>
               <td>{data.status}</td>
               {/* <td>{data.contact.phone}</td> */}
-              {/* <td>{data.published_at.slice(0, 10)}</td> */}
+              <td>{data.date.slice(0, 10)}</td>
               <td>
-                {/* <img className="imgStyle"
+                {<img className="imgStyle"
                   
                   src="/images/paw_print.png"
+                  alt= {data.name}
                 //   onClick={() => savePetData(data)}
-                ></img> */}
+                ></img>}
               </td>
             </tr>
           );
