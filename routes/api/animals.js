@@ -7,7 +7,7 @@ router
   .get(animalsController.findAll)
   .post(animalsController.create);
 
-// Matches with "/api/posts/:id"
+// Matches with "/api/favorites/:id"
 router
   .route("/:id")
   .get(animalsController.findById)

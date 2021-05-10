@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: lightgray;
 }
 
 code {
@@ -52,7 +53,7 @@ code {
 }
 
 .table {
-  width: 62%
+  width: 62%,
 }
 .tableCont {
   display: flex;

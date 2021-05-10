@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   Jumbotron,
   Container,
@@ -6,7 +6,6 @@ import {
   Col,
   Row,
 } from "react-bootstrap";
-import API from "../../utils/API";
 import "../../../src/index.css"
 
 // function Jumbo() {
@@ -16,8 +15,8 @@ import "../../../src/index.css"
 // }, [])
 
 function Jumbo() {
-  const [location, setLocation] = useState("");
-  const cardstyle = { backgroundColor: "#F16E10", height: "100%" };
+  // const [location, setLocation] = useState("");
+  // const cardstyle = { backgroundColor: "#F16E10", height: "100%" };
   const padding = { padding: "0" };
   return (
     <Jumbotron fluid>
@@ -44,6 +43,7 @@ function Jumbo() {
               <Card.Img
                 variant="top"
                 src="/images/Kittens-Puppies-dapple.jpeg"
+                alt="BFFs"
               />
             </Card>
           </Col>

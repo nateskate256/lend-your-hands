@@ -42,8 +42,10 @@ const animalSeeds = [
   },
 ];
 
-db.Animals.deleteMany({})
-  .then(() => db.Animals.collection.insertMany(animalSeeds))
+// db.Animals.deleteMany({})
+  // .then(() =>
+  (
+   db.Animals.collection.insertMany(animalSeeds))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
